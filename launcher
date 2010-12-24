@@ -1,4 +1,4 @@
 #!/bin/bash
 
-exe=`dmenu_path | dmenu -fa "Envy Code R-9" -nb "#333" -nf "#999" -sb "#999" -sf "#333"`
+exe=`dmenu_path | dmenu -fn "Envy Code R-9" -nb "#333" -nf "#999" -sb "#999" -sf "#333"`
 exec $exe
