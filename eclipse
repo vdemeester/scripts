@@ -1,0 +1,10 @@
+#!/bin/bash
+# eclipse "wrapper" bin
+
+if [[ -f /usr/bin/eclipse ]]; then
+	exe="/usr/bin/eclipse"
+elif [[ -f /opt/eclipse/eclipse ]]; then
+	exe="/opt/eclipse/eclipse"
+fi
+
+exec $exe $*
