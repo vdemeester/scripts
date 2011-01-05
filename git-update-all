@@ -13,7 +13,7 @@ fi
 DIR_COUNT=${#directories[@]}
 
 for (( i=0;i<$DIR_COUNT;i++)); do
-	echo ">> Pulling in ${directories[${i}]}"
+	echo ">> Fetching in ${directories[${i}]}"
 	absolute_dir=`readlink -f ${directories[${i}]}`
 	if [[ -d $absolute_dir ]]; then
 		cd $absolute_dir
@@ -25,6 +25,7 @@ for (( i=0;i<$DIR_COUNT;i++)); do
 			# Uncool, not a git repo
 			echo "<@ This is not a git repo, skipping"
 		fi
+		cd -
 	fi
 done 
 
