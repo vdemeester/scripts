@@ -3,6 +3,8 @@
 
 if [[ -f /usr/bin/eclipse ]]; then
 	exe="/usr/bin/eclipse"
+elif [[ -f /usr/bin/eclipse-3.6 ]]; then
+    exe="/usr/bin/eclipse-3.6"
 elif [[ -f /opt/eclipse/eclipse ]]; then
 	exe="/opt/eclipse/eclipse"
 fi
