@@ -6,6 +6,10 @@
 
 directories=(`pwd`)
 
+realpath() {
+	    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
+
 if [[ $# -gt 1 ]]; then
 	directories=("$@")
 fi
@@ -14,7 +18,8 @@ DIR_COUNT=${#directories[@]}
 
 for (( i=0;i<$DIR_COUNT;i++)); do
 	echo ">> Fetching in ${directories[${i}]}"
-	absolute_dir=`readlink -f ${directories[${i}]}`
+	#absolute_dir=`readlink -f ${directories[${i}]}`
+	absolute_dir=`realpath ${directories[${i}]}`
 	if [[ -d $absolute_dir ]]; then
 		cd $absolute_dir
 		git st >/dev/null 2>&1
