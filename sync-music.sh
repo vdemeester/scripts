@@ -26,6 +26,7 @@ command -v rsync >/dev/null || {
     exit 1
 }
 
+FILTER="filter"
 VERBOSE=""
 test "$1" = '-v' && {
     VERBOSE="$1"
@@ -62,19 +63,41 @@ then
     echo "Warning : You did not use a trailing slash for $source"
     echo "The trailing slash has a meaning with rsync, you should read the manual before doing anything wrong."
     echo "Are you sure to continue ? (y/N)"
-    read yes
-    if ! test -z "$yes" && ( test "$yes" = "y" || test "$yes" = "Y" )
+    read slash
+    if ! test -z "$slash" && ( test "$slash" = "y" || test "$slash" = "Y" )
     then echo 'You take your own risks !' #do nothing !
     else exit 1
+    fi
+fi
+
+# And this is time to check if there is a `filter` file in `<destination>`.
+# If not, let's ask the user !
+filter_file="${destination%/}/$FILTER"
+echo "$filter_file"
+if test -f "${filter_file}"
+then
+    FILTER_ARG="--filter=. $filter_file"
+else
+    echo "Warning: No filters present in ${destination}. Without a filter file
+it's going to be a full sync."
+    echo "Are you sur to continue ? (y/N)"
+    read filter
+    if ! test -z "$filter" && ( test "$filter" = "y" || test "$filter" = "Y" )
+    then
+        echo ">> Full sync, then"
+        FILTER_ARG=""
+    else
+        exit 1
     fi
 fi
 
 # This is now the main part. We are building the command line based on what we
 # got upfront.
 rsync -a \
-      $VERBOSE \
+      --update \
+      "$VERBOSE" \
       $* \
-      --filter=". filter" \
+      "$FILTER_ARG" \
       --delete-excluded \
       $source \
       $destination
