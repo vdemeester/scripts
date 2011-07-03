@@ -43,11 +43,11 @@ shift
 
 # We are now going to test if the given `<source>` and `<destination>` does 
 # exists and *are* folders.
-if ! test -d $source
-then
-    echo "$source does not exists or is not a folder"
-    exit 1
-fi
+#if ! test -d $source
+#then
+#    echo "$source does not exists or is not a folder"
+#    exit 1
+#fi
 if ! test -d $destination
 then
     echo "$destination does not exists or is not a folder"
