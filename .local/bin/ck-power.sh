@@ -11,4 +11,7 @@ elif [ $1 = "reboot" ]; then
 elif [ $1 = "suspend" ]; then
 	# Suspend
 	dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+elif [ $1 = "hibernate" ]; then
+	# Hibernate
+	dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
 fi
