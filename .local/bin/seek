@@ -1,0 +1,31 @@
+#!/bin/bash
+# seek - search for name of files/folder(s) recursively in a directory
+
+# display usage if full argument isn't given
+if [[ -z "$@" ]]; then
+  echo " ${0##*/} <*d,f> <pattern> <*location>"
+  echo "   Search directory for file of folder match (*optional)"
+  echo "   Example: 'seek d top /home/user'.  Output: '/home/user/Desktop...'"
+  exit
+fi
+
+case $1 in
+  d ) if [ -z "$3" ]; then
+        find .    -type d -iname "*$2*"
+        else
+        find "$3" -type d -iname "*$2*"
+      fi
+      ;;
+  f ) if [ -z "$3" ]; then
+        find .    -type f -iname "*$2*"
+        else
+        find "$3" -type f -iname "*$2*"
+      fi
+      ;;
+  * ) if [ -z "$2" ]; then
+        find .    -iname "*$1*"
+        else
+        find "$2" -iname "*$1*"
+      fi
+      ;;
+esac
