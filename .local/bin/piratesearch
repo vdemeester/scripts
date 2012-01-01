@@ -152,7 +152,7 @@ download() {
 }
 
 # to where do i download the torrents?
-downloads="$HOME/Downloads"
+downloads="$HOME/downloads"
 
 # check that thepiratebay is up first -- it's getting more and more
 # flaky as time goes on...
