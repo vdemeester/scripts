@@ -1,11 +1,10 @@
 *
+!.local
 !.local/bin
-!.local/bin/*
 !.local/bin/ack
 !.local/bin/ck-power.sh
 !.local/bin/colorscheme
 !.local/bin/colorscheme_fun
-!.local/bin/eclipse
 !.local/bin/getResolution.sh
 !.local/bin/git-cut-branch
 !.local/bin/git-github-grab
@@ -21,3 +20,5 @@
 !.local/bin/system_release
 !.local/bin/t.py
 !.local/bin/vim
+!.gitignore.d
+!.gitignore.d/scripts
