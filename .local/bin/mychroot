@@ -70,7 +70,7 @@ fi
 
 # 3. schroot configuration if available
 if test -d /etc/schroot; then
-
+    echo "TODO"
 fi
 
 # 4. Yo mamma !
