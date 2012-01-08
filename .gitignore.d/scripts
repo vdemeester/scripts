@@ -20,5 +20,6 @@
 !.local/bin/system_release
 !.local/bin/t.py
 !.local/bin/vim
+!.local/bin/mychroot
 !.gitignore.d
 !.gitignore.d/scripts
