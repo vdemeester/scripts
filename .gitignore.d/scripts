@@ -21,5 +21,6 @@
 !.local/bin/t.py
 !.local/bin/vim
 !.local/bin/mychroot
+!.local/bin/ssh_wrapper
 !.gitignore.d
 !.gitignore.d/scripts

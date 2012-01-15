@@ -1,0 +1,26 @@
+#!/bin/sh
+# ssh-wrapper
+# The main job of this wrapper is to load ssh-keys if not loaded
+SELF=$(basename $0)
+
+command -v ssh >/dev/null || {
+    echo "$SELF: Original ssh command no found..."
+    exit 1
+}
+
+# If no agent are running, there is nothing to do
+if test -n "$SSH_AGENT_PID" && test -n "$SSH_AUTH_SOCK"; then
+    added_keys=$(ssh-add -l)
+    for pub_key in $HOME/.ssh/*.pub; do
+        private_key=$(echo $pub_key | sed 's/.pub//g')
+        # Get the fingerprint
+        line="$(ssh-keygen -l -f $pub_key | sed 's/.pub//g')"
+        is_added=$(expr "$added_keys" : ".*$line.*")
+        if test $is_added -eq 0; then
+            # We have to add the key to the agent
+            ssh-add $private_key
+        fi
+    done
+fi
+
+exec ssh $@
