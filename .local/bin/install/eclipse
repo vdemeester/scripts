@@ -13,7 +13,8 @@ url_start="http://www.eclipse.org/downloads/download.php?file=/technology/epp/do
 url="${url_start}/${version}/${sr}/${eclipse}-${url_os}.tar.gz&r=1"
 
 echo "Installing eclipse"
-echo "Cheking eclipse version ${eclipse}"
+echo "Cheking eclipse version ${eclipse} from ${url} [Enter to continue]"
+read x
 output="/tmp/${eclipse}-${url_os}.tar.gz"
 response="$(curl -C - --write-out %{http_code} --output ${output} --location $url)"
 case $response in
