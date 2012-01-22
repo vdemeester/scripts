@@ -14,7 +14,8 @@ if test -n "$SSH_AGENT_PID" && test -n "$SSH_AUTH_SOCK"; then
     for pub_key in $HOME/.ssh/*.pub; do
         private_key=$(echo $pub_key | sed 's/.pub//g')
         # Get the fingerprint
-        line="$(ssh-keygen -l -f $pub_key | sed 's/.pub//g')"
+        #line="$(ssh-keygen -l -f $pub_key | sed 's/.pub//g')" # did it work ?
+        line="$(ssh-keygen -l -f $pub_key | awk '{ print $2 }')"
         is_added=$(expr "$added_keys" : ".*$line.*")
         if test $is_added -eq 0; then
             # We have to add the key to the agent
