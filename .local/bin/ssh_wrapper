@@ -37,12 +37,12 @@ fi
 #     Host bar
 #         User toto
 #         IdentifyFile ~/.ssh/id_rsa
-#         #-Option: TERM=xterm
-#         #-Option: ENCODING=ISO-8859-15
+#         #-Option:TERM=xterm
+#         #-Option:ENCODING=ISO-8859-15
 #     Host foobar
 #         User titi
-#         #-Option: LANG=C
-#         #-Option: LC_MESSAGES=C
+#         #-Option:LANG=C
+#         #-Option:LC_MESSAGES=C
 #
 # If I want to connect to foobar, I want to use LANG=C and LC_MESSAGES=C when
 # running ssh (or else). It run eval by default (something like a local export).
