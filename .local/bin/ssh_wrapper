@@ -63,7 +63,8 @@ for elt in $(echo $ssh_config | grep "#-"); do
         encoding=$(echo $var | awk 'BEGIN { FS="=" } {print $2}')
         if ! locale | grep -q "$encoding"; then
             # the encoding requested is not the same
-            pre_cmd="luit -p -encoding $encoding"
+            # pre_cmd="luit -p -encoding $encoding" FIXME: -p is not available everywhere... how to test it ?
+            pre_cmd="luit -encoding $encoding"
             enc_color="$(tput setaf 5)"
             reset="$(tput sgr0)"
             cenc_color="$(tput setaf 2)"
