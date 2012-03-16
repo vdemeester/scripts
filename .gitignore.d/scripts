@@ -2,7 +2,7 @@
 !.local
 !.local/bin
 !.local/bin/ack
-!.local/bin/ck-power.sh
+!.local/bin/pwrman
 !.local/bin/colorscheme
 !.local/bin/colorscheme_fun
 !.local/bin/getResolution.sh
