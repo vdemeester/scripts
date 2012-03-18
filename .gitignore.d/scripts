@@ -26,5 +26,6 @@
 !.local/bin/install
 !.local/bin/install/maven
 !.local/bin/install/eclipse
+!.local/bin/statnot
 !.gitignore.d
 !.gitignore.d/scripts
