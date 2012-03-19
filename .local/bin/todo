@@ -1,0 +1,22 @@
+#!/bin/sh
+# Part of sh-todo:
+# https://github.com/asb/sh-todo
+set -e
+
+. ~/.sh-todo
+
+NEW_TODO="$*"
+
+# if no arguments, then print todo list instead
+if [ -z "$NEW_TODO" ]; then
+  while read -r LINE; do
+    if [ "${LINE#DONE }" != "$LINE" ]; then
+      printf "• $BEGIN_DONE%s$END_DONE\n" "${LINE#DONE }"
+    else
+      printf "• %s\n" "${LINE#TODO }"
+    fi
+  done < "$TODO_F"
+  exit 0
+fi
+
+printf "TODO %s\n" "$NEW_TODO" >> "$TODO_F"

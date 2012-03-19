@@ -27,5 +27,8 @@
 !.local/bin/install/maven
 !.local/bin/install/eclipse
 !.local/bin/statnot
+!.local/bin/todo
+!.local/bin/todone
+!.local/bin/todone-archive
 !.gitignore.d
 !.gitignore.d/scripts

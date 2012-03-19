@@ -1,0 +1,35 @@
+#!/bin/sh
+# Part of sh-todo:
+# https://github.com/asb/sh-todo
+set -e
+
+. ~/.sh-todo
+
+PAT="$*"
+
+if [ -z "$PAT" ]; then
+  printf "Error: no task to mark done specified\n" >&2
+  exit 1
+fi
+
+> "$TODO_F.tmp"
+
+HAD_MATCH=0
+while read -r LINE; do
+  if [ "${LINE#TODO *$PAT}" != "$LINE" ]; then
+    HAD_MATCH=1
+    TASK="${LINE#TODO }"
+    printf "• $BEGIN_DONE%s$END_DONE\n" "$TASK"
+    LINE=$(printf "DONE %s ($(date "+%Y-%m-%d %R"))" "$TASK")
+    printf "%s\n" "$LINE" >> "$TODONE_F"
+  fi
+  printf "%s\n" "$LINE" >> "$TODO_F.tmp"
+done < "$TODO_F"
+
+if [ $HAD_MATCH -eq 0 ]; then
+  printf "Error: no tasks matched the given pattern\n" >&2
+  rm "$TODO_F.tmp"
+  exit 1
+fi
+
+mv "$TODO_F.tmp" "$TODO_F"
