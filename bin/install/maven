@@ -28,27 +28,27 @@ case $response in
         ;;
 esac
 
-if ! test -d $HOME/.local/lib; then
-    echo "$(basename $0): $HOME/.local/lib does not exists, creating it."
-    mkdir -p $HOME/.local/lib
+if ! test -d $HOME/lib; then
+    echo "$(basename $0): $HOME/lib does not exists, creating it."
+    mkdir -p $HOME/lib
 fi
 
 echo "Extracting Maven $version..."
-tar xzf $output -C $HOME/.local/lib/
+tar xzf $output -C $HOME/lib/
 
 echo "Linking Maven $version..."
-if test -L $HOME/.local/lib/apache-maven; then
+if test -L $HOME/lib/apache-maven; then
     echo "$(basename $0): A Maven installation is already present. Change the linking using local_alternative command (if present)."
 else
-    ln -s $HOME/.local/lib/apache-maven-$version $HOME/.local/lib/apache-maven
+    ln -s $HOME/lib/apache-maven-$version $HOME/lib/apache-maven
 fi
 
 echo "Checking Maven bin link..."
-if ! test -L $HOME/.local/bin/mvn-$version; then
-    ln -s $HOME/.local/lib/apache-maven-$version/bin/mvn $HOME/.local/bin/mvn-$version
+if ! test -L $HOME/bin/mvn-$version; then
+    ln -s $HOME/lib/apache-maven-$version/bin/mvn $HOME/bin/mvn-$version
 fi
-if ! test -L $HOME/.local/bin/mvn; then
-    ln -s $HOME/.local/lib/apache-maven/bin/mvn $HOME/.local/bin/mvn
+if ! test -L $HOME/bin/mvn; then
+    ln -s $HOME/lib/apache-maven/bin/mvn $HOME/bin/mvn
 fi
 
 echo "Cleaning downloaded file..."

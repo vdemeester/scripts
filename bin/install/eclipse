@@ -28,28 +28,28 @@ case $response in
         ;;
 esac
 
-if ! test -d $HOME/.local/lib; then
-    echo "$(basename $0): $HOME/.local/lib does not exists, creating it."
-    mkdir -p $HOME/.local/lib
+if ! test -d $HOME/lib; then
+    echo "$(basename $0): $HOME/lib does not exists, creating it."
+    mkdir -p $HOME/lib
 fi
 
 echo "Extracting Eclipse $version..."
-mkdir -p $HOME/.local/lib/${eclipse}
-tar xzf $output -C $HOME/.local/lib/${eclipse} --strip-components=1
+mkdir -p $HOME/lib/${eclipse}
+tar xzf $output -C $HOME/lib/${eclipse} --strip-components=1
 
 echo "Linking Eclipse $version..."
-if test -L $HOME/.local/lib/eclipse; then
+if test -L $HOME/lib/eclipse; then
     echo "$(basename $0): An Eclipse installation is already present. Change the linking using local_alternative command (if present)."
 else
-    ln -s $HOME/.local/lib/${eclipse} $HOME/.local/lib/eclipse
+    ln -s $HOME/lib/${eclipse} $HOME/lib/eclipse
 fi
 
 echo "Checking Eclipse bin link..."
-if ! test -L $HOME/.local/bin/${eclipse}; then
-    ln -s $HOME/.local/lib/${eclipse}/eclipse $HOME/.local/bin/${eclipse}
+if ! test -L $HOME/bin/${eclipse}; then
+    ln -s $HOME/lib/${eclipse}/eclipse $HOME/bin/${eclipse}
 fi
-if ! test -L $HOME/.local/bin/eclipse; then
-    ln -s $HOME/.local/lib/eclipse/eclipse $HOME/.local/bin/eclipse
+if ! test -L $HOME/bin/eclipse; then
+    ln -s $HOME/lib/eclipse/eclipse $HOME/bin/eclipse
 fi
 
 echo "Cleaning downloaded file..."
