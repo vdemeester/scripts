@@ -3,7 +3,6 @@
 !bin
 !bin/piratesearch
 !bin/timer
-!bin/tmx
 !bin/tputcolors
 !bin/try
 !bin/xkcd-grab
