@@ -21,7 +21,6 @@
 !bin/t.py
 !bin/vim
 !bin/mychroot
-!bin/ssh_wrapper
 !bin/local_install
 !bin/install
 !bin/install/maven
