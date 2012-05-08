@@ -2,6 +2,7 @@
 !.local
 !bin
 !bin/clip
+!bin/mvi
 !bin/piratesearch
 !bin/timer
 !bin/tputcolors
