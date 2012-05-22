@@ -27,6 +27,7 @@
 !bin/install
 !bin/install/maven
 !bin/install/eclipse
+!bin/install/gradle
 !bin/statnot
 !bin/todo
 !bin/todone

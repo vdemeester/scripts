@@ -1,0 +1,57 @@
+#!/usr/bin/env sh
+# Gradle installer
+# Arguments : version mirrors
+
+version=$1
+shift
+
+if test -z "$1"; then
+    # default mirror
+    mirror="http://services.gradle.org/distributions"
+else
+    mirror="$1"
+fi
+# http://services.gradle.org/distributions/gradle-1.0-rc-3-bin.zip
+echo "Installing gradle"
+echo "Checking gradle version ${version}..."
+url="${mirror}/gradle-${version}-bin.zip"
+output="/tmp/gradle-${version}-bin.zip"
+echo $url
+read a
+response="$(curl --write-out %{http_code} --output ${output} $url)"
+case $response in
+    404 )
+        echo "$(basename $0): Version not found (HTTP code ${response})"
+        rm $output
+        exit 1
+        ;;
+    * )
+        echo "$(basename $0): Unknown problem (HTTP code ${response})"
+        ;;
+esac
+
+if ! test -d $HOME/lib; then
+    echo "$(basename $0): $HOME/lib does not exists, creating it."
+    mkdir -p $HOME/lib
+fi
+
+echo "Extracting gradle $version..."
+unzip $output -d $HOME/lib/
+
+echo "Linking gradle $version..."
+if test -L $HOME/lib/gradle; then
+    echo "$(basename $0): A Maven installation is already present. Change the linking using local_alternative command (if present)."
+else
+    ln -s $HOME/lib/gradle-$version $HOME/lib/gradle
+fi
+
+echo "Checking gradle bin link..."
+if ! test -L $HOME/bin/gradle-$version; then
+    ln -s $HOME/lib/gradle-$version/bin/gradle $HOME/bin/gradle-$version
+fi
+if ! test -L $HOME/bin/mvn; then
+    ln -s $HOME/lib/gradle/bin/gradle $HOME/bin/gradle
+fi
+
+echo "Cleaning downloaded file..."
+rm $output
