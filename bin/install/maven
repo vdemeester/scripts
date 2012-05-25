@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 # Maven installer
 # Arguments : version mirrors
+. $HOME/bin/local_install/common.sh
 
 version=$1
 shift
@@ -16,22 +17,7 @@ echo "Installing maven"
 echo "Checking maven version $version..."
 url="${mirror}/apache-maven-${version}-bin.tar.gz"
 output="/tmp/apache-maven-${version}-bin.tar.gz"
-response="$(curl --write-out %{http_code} --output ${output} $url)"
-case $response in
-    404 )
-        echo "$(basename $0): Version not found (HTTP code ${response})"
-        rm $output
-        exit 1
-        ;;
-    * )
-        echo "$(basename $0): Unknown problem (HTTP code ${response})"
-        ;;
-esac
-
-if ! test -d $HOME/lib; then
-    echo "$(basename $0): $HOME/lib does not exists, creating it."
-    mkdir -p $HOME/lib
-fi
+download_file $url $output
 
 echo "Extracting Maven $version..."
 tar xzf $output -C $HOME/lib/
