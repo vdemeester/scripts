@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+# scala installer
+# Arguments : version mirrors
+. $HOME/bin/install/common.sh
+
+version=$1
+shift
+
+if test -z "$1"; then
+    # default mirror
+    mirror="http://www.scala-lang.org/downloads/distrib/files"
+else
+    mirror="$1"
+fi
+echo "Installing scala"
+echo "Checking scala version ${version}..."
+url="${mirror}/scala-${version}.tgz"
+output="/tmp/scala-${version}.tgz"
+download_file $url $output
+
+echo "Extracting scala $version..."
+tar xvzf $output -C $HOME/lib/
+
+link_lib "scala" $version
+
+link_binary "scala" "scala" $version
+link_binary "scala" "scalac" $version
+link_binary "scala" "scaladoc" $version
+link_binary "scala" "scalap" $version
+link_binary "scala" "fsc" $version
+
+echo "Cleaning downloaded file..."
+rm $output

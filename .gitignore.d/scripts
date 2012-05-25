@@ -29,6 +29,7 @@
 !bin/install/eclipse
 !bin/install/gradle
 !bin/install/groovy
+!bin/install/scala
 !bin/statnot
 !bin/todo
 !bin/todone
