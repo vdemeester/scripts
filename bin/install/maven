@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # Maven installer
 # Arguments : version mirrors
-. $HOME/bin/local_install/common.sh
+. $HOME/bin/install/common.sh
 
 version=$1
 shift
