@@ -7,17 +7,14 @@ shift
 
 if test -z "$1"; then
     # default mirror
-    mirror="http://services.gradle.org/distributions"
+    mirror="http://downloads.gradle.org/distributions"
 else
     mirror="$1"
 fi
-# http://services.gradle.org/distributions/gradle-1.0-rc-3-bin.zip
 echo "Installing gradle"
 echo "Checking gradle version ${version}..."
 url="${mirror}/gradle-${version}-bin.zip"
 output="/tmp/gradle-${version}-bin.zip"
-echo $url
-read a
 response="$(curl --write-out %{http_code} --output ${output} $url)"
 case $response in
     404 )
@@ -49,7 +46,7 @@ echo "Checking gradle bin link..."
 if ! test -L $HOME/bin/gradle-$version; then
     ln -s $HOME/lib/gradle-$version/bin/gradle $HOME/bin/gradle-$version
 fi
-if ! test -L $HOME/bin/mvn; then
+if ! test -L $HOME/bin/gradle; then
     ln -s $HOME/lib/gradle/bin/gradle $HOME/bin/gradle
 fi
 
