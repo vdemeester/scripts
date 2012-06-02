@@ -25,6 +25,7 @@
 !bin/mychroot
 !bin/local_install
 !bin/install
+!bin/install/common.sh
 !bin/install/ant
 !bin/install/maven
 !bin/install/eclipse
