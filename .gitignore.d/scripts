@@ -37,5 +37,6 @@
 !bin/todone
 !bin/todone-archive
 !bin/seek
+!bin/mr-update-github.rb
 !.gitignore.d
 !.gitignore.d/scripts
