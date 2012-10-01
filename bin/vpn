@@ -1,0 +1,3 @@
+#!/bin/sh
+# Just a real quick wrapper
+sudo invoke-rc.d openvpn $*
