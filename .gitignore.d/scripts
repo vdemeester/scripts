@@ -38,5 +38,6 @@
 !bin/todone-archive
 !bin/seek
 !bin/mr-update-github.rb
+!bin/awbatt.sh
 !.gitignore.d
 !.gitignore.d/scripts
