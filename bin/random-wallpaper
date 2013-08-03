@@ -1,0 +1,4 @@
+#!/bin/sh
+wp_path="$(xdg-user-dir PICTURES)/wallpapers/computers/$(hostname)/"
+image=$(ls $wp_path | grep -E '(jpg|png)$' | sort -R | tail -1)
+feh --bg-fill $wp_path/$image
