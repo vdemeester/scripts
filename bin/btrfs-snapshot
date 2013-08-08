@@ -8,6 +8,7 @@ shift
 DATE=`date "+%Y%m%d-%H%M%S"`
 read -p "Comment: " COMMENT
 
+test -f /run/btrfs-root/__active/${LABEL}/SNAPSHOT && sudo rm /run/btrfs-root/__active/${LABEL}/SNAPSHOT
 echo "$DATE
 $COMMENT" | sudo tee /run/btrfs-root/__active/${LABEL}/SNAPSHOT
 
@@ -20,4 +21,3 @@ fi
 sudo btrfs subvolume snapshot -r /run/btrfs-root/__snapshot/${LABEL}@${DATE} \
     /run/btrfs-root/__snapshot/${LABEL}@LATEST
 
-sudo rm /run/btrfs-root/__active/${LABEL}/SNAPSHOT
