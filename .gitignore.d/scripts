@@ -1,6 +1,7 @@
 *
 !.local
 !bin
+!bin/btrfs-snapshot
 !bin/clip
 !bin/mvi
 !bin/piratesearch

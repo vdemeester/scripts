@@ -1,0 +1,23 @@
+#!/bin/sh
+# TODO: rewrite it better :-)
+set -e
+
+LABEL=$1
+shift
+
+DATE=`date "+%Y%m%d-%H%M%S"`
+read -p "Comment: " COMMENT
+
+echo "$DATE
+$COMMENT" | sudo tee /run/btrfs-root/__active/${LABEL}/SNAPSHOT
+
+sudo btrfs subvolume snapshot -r /run/btrfs-root/__active/${LABEL} \
+    /run/btrfs-root/__snapshot/${LABEL}@${DATE}
+# Add latest
+if test -d /run/btrfs-root/__snapshot/LATEST; then
+    sudo btrfs subvolume delete /run/btrfs-root/__snapshot/LATEST
+fi
+sudo btrfs subvolume snapshot -r /run/btrfs-root/__snapshot/${LABEL}@${DATE} \
+    /run/btrfs-root/__snapshot/${LABEL}@LATEST
+
+sudo rm /run/btrfs-root/__active/${LABEL}/SNAPSHOT
