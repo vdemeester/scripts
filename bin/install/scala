@@ -8,7 +8,8 @@ shift
 
 if test -z "$1"; then
     # default mirror
-    mirror="http://www.scala-lang.org/downloads/distrib/files"
+    # mirror="http://www.scala-lang.org/downloads/distrib/files"
+    mirror="http://www.scala-lang.org/files/archive"
 else
     mirror="$1"
 fi
