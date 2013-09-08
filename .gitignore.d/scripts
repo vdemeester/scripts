@@ -1,6 +1,8 @@
 *
 !.local
 !bin
+!bin/check-command
+!bin/sbr-add
 !bin/btrfs-snapshot
 !bin/clip
 !bin/mvi

@@ -1,0 +1,17 @@
+#!/bin/sh
+# check-command is a simple command that check the availability of a command
+set -e
+
+caller="check-command"
+helpmsg=""
+
+cmd=$1
+shift
+caller=$1
+
+command -v $cmd >/dev/null || {
+    echo "$caller: $cmd command not found." 1>&2
+    exit 1
+}
+
+exit 0
