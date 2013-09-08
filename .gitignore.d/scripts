@@ -3,6 +3,7 @@
 !bin
 !bin/check-command
 !bin/sbr-add
+!bin/sbr-sync
 !bin/btrfs-snapshot
 !bin/clip
 !bin/mvi
