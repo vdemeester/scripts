@@ -2,5 +2,4 @@
 # Wrapper for makepkg (to do some stuff, not many though)
 set -e
 
-BUILDDIR=/tmp/makepkg makepkg $*
-
+BUILDDIR=/tmp/makepkg /usr/bin/makepkg $*
