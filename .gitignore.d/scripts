@@ -1,6 +1,7 @@
 *
 !.local
 !bin
+!bin/makepkg
 !bin/check-command
 !bin/sbr-add
 !bin/sbr-sync
