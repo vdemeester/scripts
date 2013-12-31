@@ -29,7 +29,7 @@ GIT_COMMAND="git --git-dir=$GIT_REPO_FOLDER/.git --work-tree=$GIT_REPO_FOLDER"
 $GIT_COMMAND annex unlock ${ARCH}/${REPO_NAME}.db*
 # Add current package to the repo
 # FIXME check current PKGBUILD for pkg extension (could be pkg.tar only)
-repo-add -s $REPO_FOLDER/${REPO_NAME}.db.tar.gz ${PKGNAME}*.pkg.tar.xz
+repo-add -s $REPO_FOLDER/${REPO_NAME}.db.tar.gz ${PKGNAME}*.pkg.tar.{x,g}z
 # Move files (+ signatures)
 mv ${PKGNAME}*.pkg.tar* ${REPO_FOLDER}/
 # Add file to annex
