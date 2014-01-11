@@ -17,4 +17,4 @@ RSYNC_OPTIONS_ADDITIONALS=$2
 RSYNC_OPTIONS="-ave ssh --copy-links --copy-dirlinks --progress --size-only --ignore-errors"
 
 #rsync -ave ssh --copy-links --copy-dirlinks / / --progress --size-only --ignore-errors --exclude={.git,archive}
-rsync $RSYNC_OPTIONS --exclude={.git,archive} $RSYNC_SOURCE $RSYNC_DESTINATION $RSYNC_OPTIONS_ADDITIONALS 2>/dev/null
+rsync $RSYNC_OPTIONS $RSYNC_SOURCE $RSYNC_DESTINATION --exclude={.git,archive} $RSYNC_OPTIONS_ADDITIONALS 2>/dev/null
