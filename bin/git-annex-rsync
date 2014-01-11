@@ -3,7 +3,6 @@
 # using rsync
 SELF=$(basename $0)
 set -e
-set -x
 # Env.
 test -z "$RSYNC_EXCLUDES" && RSYNC_EXCLUDES={.git,archive}
 # Checks
@@ -14,7 +13,6 @@ RSYNC_SOURCE="$(git root)/"
 RSYNC_DESTINATION=$1
 RSYNC_OPTIONS_ADDITIONALS=$2
 
-RSYNC_OPTIONS="-ave ssh --copy-links --copy-dirlinks --progress --size-only --ignore-errors"
+RSYNC_OPTIONS="-ave ssh --copy-links --copy-dirlinks --progress --size-only --ignore-errors --exclude=.git --exclude=.gitattributes --exclude=archive"
 
-#rsync -ave ssh --copy-links --copy-dirlinks / / --progress --size-only --ignore-errors --exclude={.git,archive}
-rsync $RSYNC_OPTIONS $RSYNC_SOURCE $RSYNC_DESTINATION --exclude={.git,archive} $RSYNC_OPTIONS_ADDITIONALS 2>/dev/null
+rsync $RSYNC_OPTIONS $RSYNC_SOURCE $RSYNC_DESTINATION $RSYNC_OPTIONS_ADDITIONALS 2>/dev/null
