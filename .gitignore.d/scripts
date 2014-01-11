@@ -1,6 +1,7 @@
 *
 !.local
 !bin
+!bin/git-annex-rsync
 !bin/makepkg
 !bin/check-command
 !bin/sbr-add
