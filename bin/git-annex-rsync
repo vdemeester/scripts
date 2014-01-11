@@ -13,6 +13,6 @@ RSYNC_SOURCE="$(git root)/"
 RSYNC_DESTINATION=$1
 RSYNC_OPTIONS_ADDITIONALS=$2
 
-RSYNC_OPTIONS="-ave ssh --copy-links --copy-dirlinks --progress --size-only --ignore-errors --exclude=.git --exclude=.gitattributes --exclude=archive"
+RSYNC_OPTIONS="-ave ssh --copy-links --copy-dirlinks --progress --size-only --exclude=.git --exclude=.gitattributes --exclude=archive --ignore-errors --delete --delete-before --prune-empty-dirs"
 
 rsync $RSYNC_OPTIONS $RSYNC_SOURCE $RSYNC_DESTINATION $RSYNC_OPTIONS_ADDITIONALS 2>/dev/null
