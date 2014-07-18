@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+# Share a session on the given port and print help to use it :D
+#
+set -e
+
+PORT=$1
+shift
+
+echo ">> Use curl 127.0.0.1:$PORT or nc 127.0.0.1 $PORT to view it"
+echo ">> Or the network IP (local, public, ..)"
+mkfifo /tmp/view$PORT; nc -l $PORT < /tmp/view$PORT & script -f /tmp/view$PORT

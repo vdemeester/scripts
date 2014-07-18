@@ -1,6 +1,7 @@
 *
 !.local
 !bin
+!bin/share-sh-session
 !bin/makepkg
 !bin/check-command
 !bin/sbr-add
