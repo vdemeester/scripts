@@ -1,6 +1,8 @@
 *
 !.local
 !bin
+!bin/screenlock
+!bin/notify
 !bin/share-sh-session
 !bin/makepkg
 !bin/check-command

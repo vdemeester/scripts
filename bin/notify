@@ -1,0 +1,18 @@
+#!/bin/sh
+# notify script to notify stuff
+# Use notify-send if present (with options)
+command -v notify-send 2>&1 >/dev/null && {
+    notify-send $@
+    exit 0
+}
+# Use xmessage otherwise
+# FIXME this doesn't really work
+while test $# -gt 0; do
+    case "$1" in
+        -*) shift; shift; break;; # skip args
+        --) shift; break;;
+        *)  break;;
+    esac
+    shift
+done
+xmessage $@
