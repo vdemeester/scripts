@@ -5,7 +5,7 @@ SELF=$(basename $0)
 set -e
 # Env.
 test -z "$REPO_FOLDER" && REPO_FOLDER="$HOME/var/repos/archlinux"
-test -z "$REMOTE_NAME" && REMOTE_NAME="pkg.sbr.io"
+test -z "$REMOTE_NAME" && REMOTE_NAME="pkg.sbr.pm"
 test -z "$REMOTE_HOST" && REMOTE_HOST="magni"
 test -z "$REMOTE_FOLDER" && REMOTE_FOLDER="/srv/www/pkg.sbr.io/archlinux"
 # Checks
