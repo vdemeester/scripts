@@ -2,7 +2,7 @@
 # lock the screen using whats there, if it's there
 # Use i3lock if present
 command -v slimlock 2>&1 >/dev/null && {
-    slimlock &
+    slimlock
     exit 0
 }
 command -v i3lock 2>&1 >/dev/null && {
