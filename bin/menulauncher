@@ -1,0 +1,23 @@
+#!/bin/bash
+# Runs a menu launcher with what we got (dmenu, ..)
+
+DMENU_CMD="dmenu"
+command -v dmenu.xft 2>&1 >/dev/null && {
+    DMENU_CMD="dmenu.xft"
+}
+DMENU_FONT="'Ubuntu Mono-10'"
+
+cachedir=${XDG_CACHE_HOME:-"$HOME/.cache"}
+if [ -d "$cachedir" ]; then
+	cache=$cachedir/dmenu_run
+else
+	cache=$HOME/.dmenu_cache # if no xdg dir, fall back to dotfile in ~
+fi
+(
+	IFS=:
+	if stest -dqr -n "$cache" $PATH; then
+		stest -flx $PATH | sort -u | tee "$cache" | $DMENU_CMD "$@" -fn $DMENU_FONT
+	else
+		$DMENU_CMD "$@" -fn $DMENU_FONT < "$cache"
+	fi
+) | ${SHELL:-"/bin/sh"} &
