@@ -1,6 +1,7 @@
 *
 !.local
 !bin
+!bin/snp
 !bin/menulauncher
 !bin/screenlock
 !bin/notify
