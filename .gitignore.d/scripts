@@ -2,6 +2,7 @@
 !.local
 !bin
 !bin/snp
+!bin/rollback
 !bin/menulauncher
 !bin/screenlock
 !bin/notify
