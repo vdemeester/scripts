@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Runs a command wrapped with btrfs pre-post snapshots.
-log_path="/var/local/log/snp"
+log_path="/var/log/snp"
+test -d $log_path || mkdir -p $log_path
 date=$(date "+%Y-%m-%d-%H%M%S")
 log_file="${log_path}/snp_${date}.log"
 
