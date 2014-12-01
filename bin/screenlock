@@ -9,7 +9,7 @@ command -v i3lock 2>&1 >/dev/null && {
     I3LOCK_OPTS=""
     PICTURES_FOLDER=$(xdg-user-dir PICTURES)
     test -e $PICTURES_FOLDER/.screensaver.png && {
-        I3LOCK_OPTS="-i $PICTURES_FOLDER/.screensaver.png"
+        I3LOCK_OPTS="-t -i $PICTURES_FOLDER/.screensaver.png"
     } || {
         I3LOCK_OPTS="-c 333333"
     }
