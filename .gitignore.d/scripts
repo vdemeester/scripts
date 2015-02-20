@@ -51,5 +51,6 @@
 !bin/seek
 !bin/mr-update-github.rb
 !bin/awbatt.sh
+!bin/mpva
 !.gitignore.d
 !.gitignore.d/scripts

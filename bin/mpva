@@ -1,0 +1,3 @@
+#!/bin/sh
+# mpv audio mode :)
+mpv --vo=null --no-audio-display "$@"
