@@ -4,7 +4,6 @@
 !bin/snp
 !bin/rollback
 !bin/menulauncher
-!bin/screenlock
 !bin/notify
 !bin/share-sh-session
 !bin/makepkg
