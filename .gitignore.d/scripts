@@ -16,6 +16,7 @@
 !/bin/rollback
 !/bin/sbr-add
 !/bin/sbr-sync
+!/bin/scudcloud
 !/bin/share-sh-session
 !/bin/snp
 !/bin/spotify
