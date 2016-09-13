@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # check-command is a simple command that check the availability of a command
 set -e
 

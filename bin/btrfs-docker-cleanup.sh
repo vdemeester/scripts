@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 # Script to clean the /var/lib/docker subvolume when using docker with btrfs storage driver
 if command -v btrfs > /dev/null 2>&1; then
