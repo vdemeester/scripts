@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# HiDPI spotify support
+if test $(hostname) = "wakasu"; then
+   echo spotify --force-device-scale-factor=1.5
+fi
